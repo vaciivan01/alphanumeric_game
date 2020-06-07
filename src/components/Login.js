@@ -5,8 +5,9 @@ class Login extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-          email:'',
-          password:''
+          loggedIn: false,
+          email:'sdfg@asdf.com',
+          password:'asdfasdf'
       };
       this.handleInputChange = this.handleInputChange.bind(this);
 
@@ -16,9 +17,13 @@ class Login extends React.Component {
     {
         if(this.state.email  !== '' && this.state.password !== '')
         {
-            axios.post(`http://127.0.0.1:8000/api/user/login`)
+            axios.get(`http://127.0.0.1:8000/api/users?email=`+this.state.email+`&password=`+this.state.password)
             .then(res => {
-                console.log(res);
+                if(res.status === 200 && res.data.result && res.data.result.id)
+                {
+                    console.log('Logged in');
+                    window.location.href = '/userPage?id='+res.data.result.id
+                }
             })
         }
     }
@@ -26,7 +31,6 @@ class Login extends React.Component {
     handleInputChange(event) {
         let value = event.target.value;
         let name = event.target.name;
-        console.log(name);
         
         this.setState({
             [name]: value

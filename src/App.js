@@ -3,6 +3,7 @@ import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
+import UserPage from './components/UserPage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,6 +29,9 @@ class App extends React.Component {
                   </li>
               </nav>
               <Switch>
+                <Route path="/userPage">
+                  <UserPage />
+                </Route>
                 <Route path="/login">
                   <Login />
                 </Route>
