@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { myConfig } from '../config.js';
 
 class Login extends React.Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class Login extends React.Component {
     {
         if(this.state.email  !== '' && this.state.password !== '')
         {
-            axios.get(`http://127.0.0.1:8000/api/users?email=`+this.state.email+`&password=`+this.state.password)
+            axios.get(myConfig.apiUrl+`/api/users?email=`+this.state.email+`&password=`+this.state.password)
             .then(res => {
                 if(res.status === 200 && res.data.result && res.data.result.id)
                 {

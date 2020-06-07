@@ -1,0 +1,5 @@
+export const myConfig = { 
+    apiUrl: 'SET_YOUR_API_URL_HERE'
+};
+
+// make your own config.js just by removing the dash in the name file

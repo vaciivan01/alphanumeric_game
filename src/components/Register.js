@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { myConfig } from '../config.js';
 
 class Register extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class Register extends React.Component {
             (this.state.re_password === this.state.password)
         )
         {
-            axios.post(`http://127.0.0.1:8000/api/users`,
+            axios.post(myConfig.apiUrl+'/api/users',
                 this.state
               ) // register url 
             .then(res => {
