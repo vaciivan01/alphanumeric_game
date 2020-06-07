@@ -28,8 +28,10 @@ class Register extends React.Component {
                 this.state
               ) // register url 
             .then(res => {
-                console.log(res);
-                
+                if(res.status === 200 && res.data.result === 'success')
+                {
+                    window.location.href = '/login'
+                }
             })
         }
     }
